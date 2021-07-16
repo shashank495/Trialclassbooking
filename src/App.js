@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Items from "./Components/Items";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const timer = Math.trunc(Math.random() * 30) + 30;
+
+  const [time, setTime] = useState(timer);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(time - 1);
+    }, 1000);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="flex">
+        <h3>Time Left {time}</h3>
+      </div>
+      <h1>Claim Your Free trial Class</h1>
+      <div className="inner-cont">
+        <h2>Class schedule</h2>
+      </div>
+      <Items />
+    </>
   );
 }
-
-export default App;
